@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      @import url("https://googleapis.com");
+    </style>
+
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body>
+    <!-- donate bar -->
+    <div class="sticky-bar">
+      <p>Support Garvika Goyal</p>
+      <button class="orange-btn" onclick="showPopup('donatePopup')">
+        DONATE NOW
+      </button>
+    </div>
+
+    <!-- dark background behind every popup -->
+    <div class="overlay" id="overlay" onclick="hideAllPopups()"></div>
+
+    <!-- Donate popup -->
+    <div class="popup" id="donatePopup">
+      <div class="modal-header">
+        <h2>Transaction Details</h2>
+        <span class="modal-close" onclick="hideAllPopups()">&times;</span>
+      </div>
+
+      <div class="tabs">
+        <div
+          id="giveOnceTab"
+          class="tab active"
+          onclick="switchDonateTab('once')"
+        >
+          Give Once
+        </div>
+        <div
+          id="giveMonthlyTab"
+          class="tab"
+          onclick="switchDonateTab('monthly')"
+        >
+          Give Monthly <span class="new-badge">NEW</span>
+        </div>
+      </div>
+
+      <div id="giveOnceContent" class="tab-content">
+        <div class="amount-options" data-mode="once">
+          <button
+            type="button"
+            class="amount-btn"
+            data-amount="1800"
+            onclick="selectAmount(this, 'once')"
+          >
+            ₹ 1800
+          </button>
+          <button
+            type="button"
+            class="amount-btn"
+            data-amount="4000"
+            onclick="selectAmount(this, 'once')"
+          >
+            ₹ 4000
+          </button>
+          <button
+            type="button"
+            class="amount-btn"
+            data-amount="7500"
+            onclick="selectAmount(this, 'once')"
+          >
+            ₹ 7500
+          </button>
+          <button
+            type="button"
+            class="amount-btn active"
+            data-amount="9999"
+            onclick="selectAmount(this, 'once')"
+          >
+            ₹ 9999
+          </button>
+        </div>
+
+        <div class="amount-row">
+          <select class="currency-select">
+            <option>₹ - INR</option>
+          </select>
+          <input
+            type="number"
+            id="onceCustomAmount"
+            class="custom-amount"
+            placeholder="9999"
+            oninput="onCustomAmountChange('once')"
+          />
+        </div>
+
+        <div class="tip-section">
+          <div class="tip-header" onclick="toggleTip()">
+            <div>
+              <p class="tip-title">Share Some Love?</p>
+              <p class="tip-subtitle">
+                Add 16% to help us fund urgent campaigns
+              </p>
+            </div>
+            <span class="chevron open" id="tipChevron">&#9660;</span>
+          </div>
+
+          <div class="tip-body" id="tipBody">
+            <div>
+              <p class="tip-subtitle2">
+                Your tip allows us to continue helping more people &amp;
+                communities at a reduced fee!
+              </p>
+            </div>
+            <div class="tip-options">
+              <button
+                type="button"
+                class="tip-btn"
+                data-percent="11"
+                onclick="selectTip(this)"
+              >
+                11%
+              </button>
+              <button
+                type="button"
+                class="tip-btn active"
+                data-percent="16"
+                onclick="selectTip(this)"
+              >
+                16%
+              </button>
+              <button
+                type="button"
+                class="tip-btn"
+                data-percent="21"
+                onclick="selectTip(this)"
+              >
+                21%
+              </button>
+              <button
+                type="button"
+                class="tip-btn"
+                data-percent="other"
+                onclick="selectTip(this)"
+              >
+                Other Amount
+              </button>
+            </div>
+            <input
+              type="number"
+              id="tipOtherInput"
+              class="custom-amount tip-other-input hidden"
+              placeholder="Enter tip amount"
+              oninput="updateOnceTotal()"
+            />
+          </div>
+        </div>
+
+        <div class="total-box">
+          <p class="total-main">
+            Total: ₹ <span id="onceTotalAmount">11599</span>
+          </p>
+          <p class="total-sub">
+            (₹ <span id="onceBaseDisplay">9999</span> donation amount + ₹
+            <span id="onceTipDisplay">1600</span> Tip Amount)
+          </p>
+        </div>
+
+        <form
+          id="onceForm"
+          class="donor-form"
+          onsubmit="return submitDonateForm(event, 'once');"
+        >
+          <div class="field">
+            <input type="text" placeholder="Full Name *" required />
+          </div>
+
+          <label class="checkbox-line">
+            <input type="checkbox" /> Contribute Anonymously
+          </label>
+
+          <div class="field">
+            <input type="email" placeholder="Email *" required />
+          </div>
+
+          <div class="field-row">
+            <select class="code-select">
+              <option>(+91) India</option>
+            </select>
+            <input type="tel" placeholder="Phone Number *" required />
+          </div>
+
+          <div class="field">
+            <p class="label-muted">Billing State</p>
+            <p class="billing-state">Maharashtra</p>
+          </div>
+
+          <div class="field">
+            <p class="label-muted">
+              Are you an Indian Citizen?<span class="req">*</span>
+            </p>
+            <div>
+              <label
+                ><input type="radio" name="citizenOnce" checked /> Yes</label
+              >
+            </div>
+            <div>
+              <label><input type="radio" name="citizenOnce" /> No</label>
+            </div>
+          </div>
+
+          <label class="checkbox-line">
+            <input type="checkbox" checked />I want to receive transaction
+            updates / alerts from Impact Guru
+          </label>
+
+          <p class="terms-text">
+            By proceeding, you are agreeing to Impact Guru's
+            <a href="https://www.impactguru.com/terms-of-use">Terms of Use</a>,
+            <a href="https://www.impactguru.com/privacy-policy"
+              >Privacy Policy</a
+            >, and
+            <a href="https://www.impactguru.com/cookie-policy">Cookie Policy</a>
+          </p>
+
+          <button type="submit" class="donate-btn">
+            DONATE NOW ( ₹ <span id="onceDonateBtnAmount">11599</span> )
+          </button>
+        </form>
+      </div>
+
+      <div id="giveMonthlyContent" class="tab-content hidden">
+        <p class="support-line">
+          Your first donation will support <b>Garvika Goyal</b>
+        </p>
+        <p class="support-sub">
+          Subsequent donations support other patients who need immediate help.
+        </p>
+        <p class="support-note">
+          Note: Receive monthly fund utilization reports!
+        </p>
+
+        <h3 class="step-title">1. CHOOSE MONTHLY AMOUNT</h3>
+        <div class="amount-options" data-mode="monthly">
+          <button
+            type="button"
+            class="amount-btn"
+            data-amount="500"
+            onclick="selectAmount(this, 'monthly')"
+          >
+            ₹ 500
+          </button>
+          <button
+            type="button"
+            class="amount-btn"
+            data-amount="750"
+            onclick="selectAmount(this, 'monthly')"
+          >
+            ₹ 750
+          </button>
+          <button
+            type="button"
+            class="amount-btn"
+            data-amount="1000"
+            onclick="selectAmount(this, 'monthly')"
+          >
+            ₹ 1000
+          </button>
+          <button
+            type="button"
+            class="amount-btn active"
+            data-amount="1500"
+            onclick="selectAmount(this, 'monthly')"
+          >
+            ₹ 1500
+          </button>
+        </div>
+
+        <div class="amount-row">
+          <select class="currency-select">
+            <option>₹ - INR</option>
+          </select>
+          <input
+            type="number"
+            id="monthlyCustomAmount"
+            class="custom-amount"
+            value="1500"
+            oninput="onCustomAmountChange('monthly')"
+          />
+        </div>
+
+        <h3 class="step-title">2. CHOOSE MONTHLY PLAN</h3>
+        <div class="plan-row">
+          <label>Subsequent Donation to:</label>
+          <select class="plan-select">
+            <option>Critical Illness Fundraisers</option>
+          </select>
+        </div>
+
+        <p class="plan-note">
+          &#9432; Subsequent donations support patients fighting similar
+          critical illnesses.<br />
+          Amount is auto-debited on the 2nd of every month.
+        </p>
+
+        <h3 class="step-title">3. YOUR DETAILS</h3>
+        <form
+          id="monthlyForm"
+          class="donor-form"
+          onsubmit="return submitDonateForm(event, 'monthly');"
+        >
+          <div class="field">
+            <input type="text" placeholder="Full Name *" required />
+          </div>
+
+          <label class="checkbox-line">
+            <input type="checkbox" /> Contribute Anonymously
+          </label>
+
+          <div class="field">
+            <input type="email" placeholder="Email *" required />
+          </div>
+
+          <div class="field-row">
+            <select class="code-select">
+              <option>(+91) India</option>
+            </select>
+            <input type="tel" placeholder="Phone Number *" required />
+          </div>
+
+          <div class="field">
+            <p class="label-muted">Billing State</p>
+            <p class="billing-state">Maharashtra</p>
+          </div>
+
+          <div class="field">
+            <p class="label-muted">
+              Are you an Indian Citizen?<span class="req">*</span>
+            </p>
+            <label><input type="radio" name="citizenMonthly" /> Yes</label>
+            <label><input type="radio" name="citizenMonthly" /> No</label>
+          </div>
+
+          <label class="checkbox-line">
+            <input type="checkbox" /> <b>Honor this donation?</b>
+          </label>
+
+          <label class="checkbox-line">
+            <input type="checkbox" checked />
+            I want to receive transaction updates / alerts from Impact Guru
+          </label>
+
+          <p class="terms-text">
+            By proceeding, you are agreeing to Impact Guru's
+            <a href="https://www.impactguru.com/terms-of-use">Terms of Use</a>,
+            <a href="https://www.impactguru.com/privacy-policy"
+              >Privacy Policy</a
+            >, and
+            <a href="https://www.impactguru.com/cookie-policy">Cookie Policy</a>
+          </p>
+          <button type="submit" class="donate-btn">
+            DONATE NOW ( ₹ <span id="monthlyDonateBtnAmount">1500</span>/MONTH )
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script1.js"></script>
+  </body>
+</html>

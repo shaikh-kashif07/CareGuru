@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garvika Fights SMA. Save Her Life!</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/6650de512a.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="new_style.css" />
+</head>
+
+<body>
+  <header class="header navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center">
+      <nav class="header-row d-flex align-items-center justify-content-between w-100">
+        <span class="main-logo">
+          <a href="new_index.html">
+            <img src="https://cdn.caregurufoundation.org/themes/neumorphism/images/cgf/Header/CareGuru-Logo-final.webp"
+              alt="ImpactGuru" />
+          </a>
+        </span>
+
+        <!-- Mobile header right side: Currency Dropdown + Hamburger Toggler -->
+        <div class="mobile-header-right d-flex align-items-center gap-3">
+          <div class="dropdown currency-dropdown-mobile d-lg-none">
+            <a class="currency-btn dropdown-toggle text-decoration-none" href="#" id="currencyLabelMobile" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              ₹ INR <i class="fa-solid fa-chevron-down ms-1" style="font-size: 11px;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="currencyLabelMobile">
+              <li>
+                <a class="dropdown-item" href="#" onclick="changeCurrency('₹ INR')">₹ INR</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="changeCurrency('$ USD')">$ USD</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="changeCurrency('£ GBP')">£ GBP</a>
+              </li>
+            </ul>
+          </div>
+
+          <button class="navbar-toggler border-0 shadow-none second-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse w-100 order-last mt-3 mt-lg-0" id="navbarNav">
+          <div
+            class="nav-lists d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-3 w-100 justify-content-lg-end">
+
+            <div class="search-box-wrapper position-relative w-100">
+              <input type="text" class="form-control search-box" placeholder="Search" />
+              <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+            </div>
+
+            <a href="https://www.impactguru.com/users/start-fr-v3?utm_source=website&utm_medium=website_fundraiser_desktop_topnavbar&utm_campaign=start_free_fundraiser&utm_content=guest&utm_term=guest"
+              class="right-nav">Start a free fundraiser</a>
+
+            <a href="https://www.impactguru.com/medical-crowdfunding?utm_source=website&utm_medium=website_fundraiser_desktop_topnavbar&utm_campaign=how_it_works&utm_content=guest&utm_term=guest"
+              class="right-nav">How it Works</a>
+
+            <a href="https://www.impactguru.com/fundraisers?utm_source=website&utm_medium=website_fundraiser_desktop_topnavbar&utm_campaign=browse_fundraisers&utm_content=guest&utm_term=guest"
+              class="right-nav">Browse Fundraisers</a>
+
+            <a href="#" class="contact-btn help-btn" data-bs-toggle="modal" data-bs-target="#donatePopup">Help Shiva</a>
+
+            <!-- Login profile dropdown -->
+            <div class="dropdown login-dropdown">
+              <a class="right-nav dropdown-toggle d-flex align-items-center gap-1" href="#" id="loginMenu" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user fs-5"></i>
+                <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end" aria-labelledby="loginMenu">
+                <li>
+                  <a class="dropdown-item"
+                    href="https://www.impactguru.com/users/v2/login?targeturl=https%3A%2F%2Fwww.impactguru.com%2Ffundraiser%2Fhelp-garvika-goyal"
+                    data-bs-toggle="modal" data-bs-target="#loginPopup">Login</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="https://www.impactguru.com/users/start-fr-v3" data-bs-toggle="modal"
+                    data-bs-target="#signupPopup">Sign Up</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Currency dropdown for Desktop -->
+            <div class="dropdown currency-dropdown-desktop d-none d-lg-block">
+              <a class="right-nav dropdown-toggle" href="#" id="currencyLabel" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                ₹ INR <i class="fa-solid fa-chevron-down ms-1" style="font-size: 11px;"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="currencyLabel">
+                <li>
+                  <a class="dropdown-item" href="#" onclick="changeCurrency('₹ INR')">₹ INR</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" onclick="changeCurrency('$ USD')">$ USD</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" onclick="changeCurrency('£ GBP')">£ GBP</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <div class="container-fluid">
+    <div class="title-row text-center mt-2">
+      <div class="display-title">
+        <h1>Garvika Fights SMA. Save Her Life!</h1>
+        <div class="tag">
+          <img src="assets/medical_logo.png" alt="Medical" />
+        </div>
+      </div>
+
+      <!-- share-box -->
+
+      <div
+        class="share-floating-container position-fixed end-0 translate-middle-y d-flex flex-column align-items-center me-3"
+        style="top: 50%; z-index: 1080">
+        <div class="dropdown">
+          <div class="share-box text-center p-2 shadow-sm dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <p class="m-0 fw-bold fs-5 text-dark text-truncate">421</p>
+
+            <button class="btn btn-primary rounded-circle p-0 border-0" id="shareDropdownBtn" data-bs-toggle="dropdown"
+              aria-expanded="false" style="width: 38px; height: 38px; background: #081b41">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+
+            <p class="m-0 small text-muted text-uppercase" style="font-size: 10px; letter-spacing: 0.5px">
+              Shares
+            </p>
+          </div>
+
+          <div class="dropdown-menu share-dropdown" aria-labelledby="shareDropdownBtn">
+            <button type="button" id="cmp-nfr-popup-mail-share" class="share-icon bg-danger text-white">
+              <i class="fas fa-envelope"></i>
+            </button>
+
+            <button id="cmp-nfr-popup-linkedin-share"
+              class="share-icon text-white rounded-circle d-flex align-items-center justify-content-center p-0" style="
+                  width: 38px;
+                  height: 38px;
+                  background-color: #0077b5;
+                  cursor: pointer;
+                ">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </button>
+
+            <button id="cmp-nfr-popup-twitter-share"
+              class="share-icon text-white rounded-circle d-flex align-items-center justify-content-center p-0" style="
+                  width: 38px;
+                  height: 38px;
+                  background-color: #1da1f2;
+                  cursor: pointer;
+                ">
+              <i class="fa-brands fa-twitter"></i>
+            </button>
+
+            <button id="cmp-nfr-popup-facebook-share"
+              class="share-icon text-white rounded-circle d-flex align-items-center justify-content-center p-0" style="
+                  width: 38px;
+                  height: 38px;
+                  background-color: #5890ff;
+                  cursor: pointer;
+                ">
+              <i class="fa-brands fa-facebook-f"></i>
+            </button>
+
+            <button id="cmp-nfr-popup-whatsapp-share"
+              class="share-icon text-white rounded-circle d-flex align-items-center justify-content-center p-0" style="
+                  width: 38px;
+                  height: 38px;
+                  background-color: #25d366;
+                  cursor: pointer;
+                ">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <!-- upper row -->
+      <div class="row upper-row mb-4">
+        <div class="col-12 col-md-8 upper-row-left-column">
+          <div class="image-box position-relative d-flex align-items-center justify-content-center">
+            <span class="urgent-tag">URGENT</span>
+            <button class="btn slide-btn slide-left" type="button" onclick="changeSlide(-1)">
+              ‹
+            </button>
+            <img id="mainImage" src="assets/upper-row-left-column_image-box_main-image.png" alt="Garvika" />
+            <button class="btn slide-btn slide-right" type="button" onclick="changeSlide(1)">
+              ›
+            </button>
+          </div>
+
+          <p class="gallery-title">GALLERY (3)</p>
+          <div class="thumbnail-row d-flex">
+            <div class="right-thumbnail d-flex gap-3">
+              <img class="thumb active" src="assets/upper-row-left-column_image-box_main-image.png"
+                onclick="setSlide(0)" />
+              <img class="thumb" src="assets/upper-row-left-column_image-box_main-image2.png" onclick="setSlide(1)" />
+              <img class="thumb" src="assets/upper-row-left-column_image-box_main-image3.png" onclick="setSlide(2)" />
+            </div>
+            <div class="left-thumbnail"></div>
+          </div>
+
+          <div class="row details-row mb-4">
+            <div class="col-6">
+              <div class="detail-card">
+                <h3>Campaigner Details</h3>
+                <p><b>Rohini Chauhan</b></p>
+                <p>📍 Karnal, Haryana</p>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#contactPopup">✉ Contact</a>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="detail-card">
+                <h3>Beneficiary Details</h3>
+                <p><b>Garvika Goyal</b></p>
+                <p>Child of Rohini Chauhan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 upper-row-right-column">
+          <div class="card">
+            <div class="circle-progress">
+              <svg width="140" height="140" viewBox="0 0 140 140">
+                <!-- Background Circle -->
+                <circle class="circle-bg" cx="70" cy="70" r="60"></circle>
+
+                <!-- Progress Circle -->
+                <circle class="circle-fill" id="circleFill" cx="70" cy="70" r="60"></circle>
+              </svg>
+
+              <div class="progress-text">
+                <h2 id="percent">0%</h2>
+                <p>funded</p>
+                <p>in 112 days</p>
+              </div>
+            </div>
+
+            <p class="raised">₹ 52,29,663 Raised of ₹ 9,50,00,000</p>
+            <p class="donors">19972 Donors</p>
+          </div>
+
+          <div class="quoted-btns">
+            <p style="
+                  font-family: &quot;Caveat&quot;, cursive;
+                  font-size: 16px;
+                  align-items: center;
+                ">
+              Funds will be transferred for Patient's Treatment
+              <b style="background-color: aquamarine">🛈</b>
+            </p>
+            <button class="btn orange-btn" type="button" data-bs-toggle="modal" data-bs-target="#donatePopup">
+              DONATE NOW
+            </button>
+            <p style="
+                  font-family: &quot;Caveat&quot;, cursive;
+                  font-size: 16px;
+                  align-items: center;
+                ">
+              Every Social Media share can bring Rs 5000
+            </p>
+            <button class="btn blue-btn" type="button" data-bs-toggle="modal" data-bs-target="#sharePopup">
+              SHARE ON FACEBOOK
+            </button>
+          </div>
+
+          <div class="card">
+            <div class="donation-payment-heading">
+              <h4 style="
+                    font-family: &quot;Caveat&quot;, cursive;
+                    font-size: 16px;
+                  ">
+                Donate via Paytm/Google-Pay/PhonePe
+              </h4>
+            </div>
+
+            <div class="payment-gateways d-flex align-items-center justify-content-center">
+              <img src="assets/phonepe_cropped.png" alt="PhonePe" />
+              <img src="assets/gpay_cropped.png" alt="Google Pay" />
+              <img src="assets/whatsapp_cropped.png" alt="WhatsApp" />
+              <img src="assets/paytm_cropped.png" alt="Paytm" />
+            </div>
+
+            <img class="qr-code"
+              src="https://www.impactguru.com/fundraiser/getUPIQR/c2c76765-4441-4ce8-b2bb-19e5f98ba520/120"
+              alt="QR Code" />
+            <div class="payment-para">
+              <p>
+                Donations made through this fundraiser and UPI ID will be
+                securely deposited into Impact Guru's bank account for the
+                patient's treatment. This UPI ID is not associated with any
+                individual's or family's personal bank account.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- lower row -->
+      <div class="row lower-row">
+        <div class="col-12 col-md-8 lower-row-left-column">
+          <!-- Latest Update -->
+          <div class="card">
+            <h2>Latest Update</h2>
+            <p><i>Dear Donors,</i></p>
+            <p>
+              4-month-old Garvika Goyal continues to bravely fight Spinal
+              Muscular Atrophy. She is currently dependent on BiPAP
+              respiratory support and tube feeding for daily survival. Doctors
+              continue to stress the urgent need for Zolgensma to prevent
+              further muscle loss.
+            </p>
+            <button class="btn outline-btn" type="button" onclick="goToDocuments()">
+              Read More
+            </button>
+          </div>
+
+          <div class="tab-bar d-flex">
+            <button class="btn tab-btn active" type="button" onclick="goToStory(this)">
+              Story
+            </button>
+            <button class="btn tab-btn" type="button" onclick="goToUpdates(this)">
+              Updates
+            </button>
+            <button class="btn tab-btn" type="button" onclick="goToComments(this)">
+              Comment
+            </button>
+          </div>
+
+          <!-- Story -->
+          <div class="tab-panel" id="storyTab">
+            <div class="quote-box">
+              "Every time I hear the sound of her breathing machine, I remind
+              myself my baby is still fighting." - Rohini Chauhan, mother.
+            </div>
+
+            <img class="story-image" src="https://cdn.impactguru.com/assets/froala_images/ig_1778569490.png"
+              alt="babies" />
+
+            <p>
+              Every morning, I wake up praying that my daughter is still
+              breathing. My baby, Garvika, is only 4 months old. At this age,
+              babies should be smiling, kicking their tiny legs, reaching for
+              their parents, and filling the home with laughter…
+            </p>
+            <p>
+              But
+              <b>my daughter cannot even lift her little hands. She cannot
+                move her legs. She cannot breathe on her own.</b>
+            </p>
+
+            <div id="storyExtra" class="extra-text">
+              <img class="story-image" src="https://cdn.impactguru.com/assets/froala_images/ig_1778569570.png"
+                alt="babies" />
+
+              <p>
+                Instead of hearing her soft coos, I hear the sound of
+                machines,
+                <b>the BiPAP that helps her breathe… the feeding tube that
+                  keeps her alive.</b>
+              </p>
+              <p>
+                When Garvika was just 45 days old, our world changed forever.
+                Doctors told us she has
+                <b>Spinal Muscular Atrophy Type 1, a rare genetic disorder</b>
+                that slowly takes away a child's ability to move, swallow, and
+                even breathe.
+              </p>
+              <p style="background-color: rgb(244, 204, 204)">
+                <b><i><span>"As a mother, nothing prepares you for hearing that
+                      your baby may not live to see her second birthday."-
+                      Rohini Chauhan, mother.</span></i></b>
+              </p>
+
+              <img class="story-image" src="https://cdn.impactguru.com/assets/froala_images/ig_1778569521.png"
+                alt="babies" />
+
+              <p>
+                Every single day, I watch SMA steal a little more of my
+                daughter's strength. Her sister watches her with tears in her
+                eyes.
+              </p>
+              <p>
+                Doctors have told us there is hope… One life-saving dose of<b>
+                  ₹9.5 crore Zolgensma</b>
+                could give my baby a chance to live and a chance to call me
+                "Mama" someday.
+              </p>
+              <p>
+                My husband works as a government employee, and despite doing
+                everything we can, this treatment is beyond what our family
+                can afford.
+              </p>
+              <p style="background-color: rgb(244, 204, 204)">
+                <b><i><span>"As a father, nothing hurts more than watching your
+                      little girl struggle for every breath while knowing
+                      there is a treatment that could save her." - Raj Kumar,
+                      father.</span></i></b>
+              </p>
+
+              <img class="story-image" src="https://cdn.impactguru.com/assets/froala_images/ig_1778569607.png"
+                alt="babies" />
+
+              <p>
+                We ask as a family hoping to save our baby. Please help us
+                give little Garvika the timely treatment she deserves.
+              </p>
+              <p><i>Help Garvika live a healthy childhood!</i></p>
+
+              <img class="story-image" src="https://cdn.impactguru.com/assets/froala_images/ig_1778569366.png"
+                alt="babies" />
+
+              <p>How can you help her?</p>
+              <p>Donate to her treatment.</p>
+              <p>
+                By donating, you help ensure that she receives the treatment
+                that saves her life.
+              </p>
+              <p>Share her story with your family and friends.</p>
+              <p>
+                By sharing her story with your loved ones and friends, you
+                will help to amplify her voice to those who care and are
+                willing to donate.
+              </p>
+
+              <p>*****</p>
+
+              <p>
+                महज चार महीने की उम्र में, गारविका स्पाइनल मस्कुलर एट्रोफी
+                नामक एक दुर्लभ बीमारी से जूझ रही है, जो दिन-प्रतिदिन उसकी
+                मांसपेशियों को कमजोर करती जा रही है।
+              </p>
+
+              <p>
+                वह अपने छोटे-छोटे हाथों, पैरों को उठा नहीं सकती, यहाँ तक कि
+                अपनी गर्दन को भी नहीं संभाल सकती, और अब सांस लेने के लिए BiPAP
+                सपोर्ट पर निर्भर है।
+              </p>
+
+              <p>
+                ज़ोलजेन्स्मा की एक जीवनरक्षक खुराक गारविका को सांस लेने,
+                चलने-फिरने और जीने का मौका दे सकती है।
+              </p>
+
+              <p>आपका दान एक बड़ा बदलाव ला सकता है!</p>
+
+              <p>आप उसकी मदद कैसे कर सकते हैं?</p>
+
+              <p>उसके इलाज के लिए दान करें।</p>
+
+              <p>
+                दान करके, आप यह सुनिश्चित करने में मदद करते हैं कि उसे वह इलाज
+                मिले जो उसकी जान बचाएगा।
+              </p>
+
+              <p>उसकी कहानी अपने परिवार और दोस्तों के साथ साझा करें।</p>
+
+              <p>
+                अपने प्रियजनों और दोस्तों के साथ उसकी कहानी साझा करके, आप उसकी
+                आवाज़ को उन लोगों तक पहुँचाने में मदद करेंगे जो उसकी परवाह
+                करते हैं और दान करने को तैयार हैं।
+              </p>
+
+              <p>
+                The goal amount of the campaign may be higher than the
+                attached estimates to address and aid the post-hospitalization
+                expenses/contingencies including but not limited to prolonged
+                medication, diagnostics, rehabilitation therapies, and
+                follow-up doctor visits/consultations which vary from disease
+                to disease.
+              </p>
+
+              <p>
+                Every rupee raised goes directly toward Garvika's Zolgensma
+                dose, a one-time gene therapy that could halt the progression
+                of her condition. Time is not on our side - every week of
+                delay increases the risk of permanent damage.
+              </p>
+            </div>
+
+            <button class="btn outline-btn" id="storyBtn" type="button" onclick="toggleStory()">
+              Read More
+            </button>
+          </div>
+
+          <!-- Documents -->
+          <div id="documentsSection">
+            <h2>Documents</h2>
+            <img class="doc-image" id="mainDoc" srcset="assets/document_1.webp" type="image/webp" alt="document" />
+            <div class="thumbnail-row d-flex">
+              <img class="doc-thumb" srcset="assets/document_1.webp" type="image/webp" onclick="setDoc(this)" />
+              <img class="doc-thumb" srcset="assets/doc_2.webp" type="image/webp" onclick="setDoc(this)" />
+              <img class="doc-thumb" srcset="assets/doc_3.webp" type="image/webp" onclick="setDoc(this)" />
+              <img class="doc-thumb" srcset="assets/doc_4.webp" type="image/webp" onclick="setDoc(this)" />
+              <img class="doc-thumb" srcset="assets/doc_5.webp" type="image/webp" onclick="setDoc(this)" />
+            </div>
+          </div>
+
+          <!-- Updates -->
+          <div class="tab-panel" id="updateTab">
+            <div class="card">
+              <h2>Updates (1)</h2>
+              <p><b>#1 (11 May, 2026)</b> - From Rohini Chauhan</p>
+              <p>
+                4-month-old Garvika Goyal continues to bravely fight Spinal
+                Muscular Atrophy. Your support is all that matters.
+              </p>
+            </div>
+          </div>
+
+          <!-- Comment -->
+          <div class="tab-panel" id="commentTab">
+            <div class="card">
+              <h2>Comment (0)</h2>
+              <div class="comment-tab-bottom d-flex align-items-center">
+                <div class="person-logo d-flex justify-content-center align-items-center">
+                  <i class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                  <input type="text" id="commentBox" placeholder="Share your well wishes here" />
+                </div>
+                <div>
+                  <button class="btn green-btn" type="button" onclick="postComment()">
+                    POST
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 lower-row-right-column">
+          <div class="card top-influencer">
+            <h3>Top Influencers</h3>
+            <div class="card-container d-flex flex-column align-items-center">
+              <div class="inf-img-wrap d-flex justify-content-center align-items-center">
+                <img src="https://cdn.caregurufoundation.org/themes/front/page/images/campaign/be-the-first-donor-3.png"
+                  alt="Be the first donor" />
+              </div>
+              <button class="btn orange-btn" type="button" data-bs-toggle="modal" data-bs-target="#donatePopup">
+                DONATE NOW
+              </button>
+            </div>
+          </div>
+
+          <div class="card all-donations">
+            <h3>All Donations</h3>
+            <div class="donor d-flex align-items-center">
+              <div class="person-logo d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <p>₹ 1,18,493 from ImpactGuru Donor</p>
+            </div>
+
+            <div class="donor d-flex align-items-center">
+              <div class="person-logo d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <p>₹ 73,200 from Vikas</p>
+            </div>
+
+            <div class="donor d-flex align-items-center">
+              <div class="person-logo d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <p>₹ 51,000 from Yogesh R</p>
+            </div>
+          </div>
+
+          <div class="card raise-funds">
+            <h3>Fundraisers for This Cause</h3>
+            <div class="card-container d-flex flex-column align-items-center">
+              <div class="inf-img-wrap d-flex justify-content-center align-items-center">
+                <img style="background-color: aliceblue" src="assets/raise_fund.png" alt="Fundraisers for This Cause" />
+              </div>
+
+              <button class="btn green-btn" type="button" data-bs-toggle="modal" data-bs-target="#donatePopup">
+                Raise Funds
+              </button>
+            </div>
+          </div>
+
+          <div class="feedback d-flex align-items-center justify-content-center">
+            <div>
+              <button class="btn outline-btn full-width" type="button" data-bs-toggle="modal"
+                data-bs-target="#referPopup">
+                REFER A PATIENT
+              </button>
+            </div>
+            <div>
+              <button class="btn outline-btn full-width red-outline" type="button" data-bs-toggle="modal"
+                data-bs-target="#concernPopup">
+                RAISE A CONCERN
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--footer -->
+  <footer>
+    <div class="container-fluid">
+      <div class="footer-top d-flex align-items-center justify-content-between">
+        <div class="footer-logo">
+          <img src="https://cdn.caregurufoundation.org/themes/neumorphism/images/cgf/Header/CareGuru-Logo-final.webp"
+            alt="main logo" />
+        </div>
+        <div class="socials d-flex">
+          <a href="https://www.facebook.com/people/Care-Guru-Foundation/61583659324373/"><i
+              class="fa-brands fa-square-facebook"></i></a>
+          <a href="https://www.instagram.com/caregurufoundation?igsh=Y2ZqdW41OTZscWhi"><i
+              class="fa-brands fa-square-instagram"></i></a>
+          <a
+            href="https://www.linkedin.com/login/?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F109379640%2Fadmin%2Fdashboard%2F"><i
+              class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-contact d-flex justify-content-start gap-4">
+        <div class="contact-item d-flex justify-content-start gap-2">
+          <span>
+            <img src="https://cdn.caregurufoundation.org/themes/neumorphism/images/cgf/Footer/footer-icon-one.svg"
+              alt="image" />
+          </span>
+          <a href="tel:18008912903">18008912903</a>
+        </div>
+
+        <div class="contact-item d-flex justify-content-start gap-2">
+          <span>
+            <img src="https://cdn.caregurufoundation.org/themes/neumorphism/images/cgf/Footer/footer-icon-two.svg"
+              alt="image" />
+          </span>
+          <a href="mailto:info@caregurufoundation.org">info@caregurufoundation.org</a>
+        </div>
+
+        <div class="contact-item d-flex justify-content-start gap-2">
+          <span>
+            <img src="https://cdn.caregurufoundation.org/themes/neumorphism/images/cgf/Footer/footer-icon-three.svg"
+              alt="image" />
+          </span>
+          <p>
+            Care Guru Foundation, 102, 1st Floor, <br />Hari Nagar, Ashram,
+            New Delhi-110014
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p class="details d-flex align-items-center justify-content-center">
+          <span> Registration Number: AADTC0354L22DL01 </span>
+          |
+          <span> PAN: AADTC0354L </span>
+          |
+          <span> Darpan id: DL/2024/0381238</span>
+        </p>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-links">
+        <ul class="d-flex justify-content-center">
+          <li>
+            <a href="https://www.caregurufoundation.org/privacy-policy">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="https://www.caregurufoundation.org/terms-conditions">
+              Terms of Use</a>
+          </li>
+          <li>
+            <a href="https://www.caregurufoundation.org/refund-policy">Refund Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="new_app.js"></script>
+</body>
+
+</html>
